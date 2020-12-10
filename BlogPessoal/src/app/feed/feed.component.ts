@@ -37,7 +37,7 @@ export class FeedComponent implements OnInit {
   findAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) =>{
       this.listaPostagens = resp
-     
+      console.log(this.listaPostagens)
     })
 
   }

@@ -5,6 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
 import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { PutPostagemComponent } from './put-postagem/put-postagem.component';
+import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
+import { DeletePostagemComponent } from './delete-postagem/delete-postagem.component';
+import { PutTemaComponent } from './put-tema/put-tema.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -12,8 +16,12 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cadastro', component: CadastroComponent},
-  {path: 'cadastro-tema', component: PostTemaComponent}
-
+  {path: 'cadastro-tema', component: PostTemaComponent},
+  {path: 'editar-post/:id', component: PutPostagemComponent},
+  {path: 'delete-post/:id', component: DeletePostagemComponent},
+  
+  {path: 'editar-tema/:id', component: PutTemaComponent},
+  {path: 'delete-tema/:id', component: DeleteTemaComponent}
 ];
 
 @NgModule({
