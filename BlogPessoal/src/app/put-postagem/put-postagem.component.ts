@@ -1,3 +1,4 @@
+import { AlertasService } from './../service/alertas.service';
 import { Tema } from './../model/Tema';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +23,8 @@ export class PutPostagemComponent implements OnInit {
     private temaService: TemaService,
     private postagemService: PostagemService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
 
 
   ) { }
@@ -55,13 +57,13 @@ export class PutPostagemComponent implements OnInit {
       this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
         this.postagem = resp
         this.router.navigate(['/feed'])  
-        alert('Postagem alterada com sucesso!')
+        this.alert.showAlertSuccess('Postagem alterada com sucesso!')
   
             
       })
     }
     else {
-      alert('Texto deve ser maior que 10 caracteres!')
+      this.alert.showAlertDanger('Texto deve ser maior que 10 caracteres!')
 
     }
 

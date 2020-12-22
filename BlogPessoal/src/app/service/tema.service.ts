@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Tema } from './../model/Tema';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class TemaService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')!)
+    headers: new HttpHeaders().set('Authorization', environment.token)
+                                            // se for inserir o localstorage insira
+                                            // localStorage.getItem('token')!
   }
 
   getAllTemas(): Observable<Tema[]> { 
@@ -32,6 +35,9 @@ export class TemaService {
     return this.http.put<Tema>('http://localhost:8080/tema', tema, this.token)
   }
 
+  getByNomeTema(nome: string):Observable<Tema[]> { 
+    return this.http.get<Tema[]>(`http://localhost:8080/tema/nome/${nome}`, this.token)
+  }
 
 
   deleteTema(id: number):Observable<Tema> { 
